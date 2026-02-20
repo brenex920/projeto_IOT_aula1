@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "author": "Breno Machado Brenex",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-breadboard-mini",
+      "id": "bb1",
+      "top": 116.1,
+      "left": 137.9,
+      "rotate": 90,
+      "attrs": {}
+    },
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -22.8,
+      "left": 195.8,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 129.6,
+      "left": 181.85,
+      "rotate": 90,
+      "attrs": { "value": "1000" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "r1:1", "bb1:1b.f", "", [ "$bb" ] ],
+    [ "r1:2", "bb1:7b.f", "", [ "$bb" ] ],
+    [ "bb1:1b.j", "esp:GND.2", "green", [ "v0" ] ],
+    [ "bb1:1b.g", "led1:C", "green", [ "v0" ] ],
+    [ "bb1:7b.j", "esp:23", "green", [ "h-38.4", "v-115.2" ] ],
+    [ "bb1:7b.g", "led1:A", "green", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}
